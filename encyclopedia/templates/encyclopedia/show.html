@@ -1,0 +1,21 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ title}}
+{% endblock %}
+
+{% block nav%}
+<a href="{% url 'edit' title=title %}">Edit current Page</a>
+{% endblock %}
+
+{% block body %}
+
+    {% if entry_body %}
+        {{ entry_body|safe }}
+    {% else %}
+        <h1 style="color: red;">Error 404</h1>
+        {{ title }} is not present in this wiki.
+        <p>To create this entry click on "Create New Page"</p>
+    {% endif %}
+
+{% endblock %}
